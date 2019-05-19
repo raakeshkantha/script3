@@ -1,0 +1,22 @@
+current_date_time=date -d '-1 day' '+%Y-%m-%d %H:%M:%S'
+echo $current_date_time;
+#file_last_modified=`stat -c "%Y-%m-%d %H:%M:%S" $file`
+
+if [ $file_last_modified -ge $current_date_time ];
+then
+    #Add working Copy file command here
+    echo "File copied"
+else
+    echo "File not modified"
+fi  
+
+#Condition to check file copied to destination folder
+
+destn_file_modified_time = `stat -c "%Y-%m-%d %H:%M:%S" $file`
+
+if [ $file_last_modified -ge $destn_file_modified_time]
+then
+    echo "File copied scuccessully to destination folder"
+else
+    echo "File not copied"
+fi
